@@ -9,12 +9,35 @@ sources:
      - name: product
        identifier: raw_gz_product
        description: product catalog of Greenweez
+       columns:
+          - name: products_id
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: purchase_price
+            description: unit price of product
 
      - name: sales
        identifier: raw_gz_sales
        description: sales of Greenweez
+       columns:
+          - name: date_date
+            description: date of purchase
+          - name: orders_id
+            description: foreign key to ship
+          - name: pdt_id
+            description: foreign key to product
 
      - name: ship
        identifier: raw_gz_ship
        description: shipping informations per order Greenweez
-
+       columns:
+          - name: orders_id
+            description: Primary key
+          - name: shipping_fee
+            description: the price the customer pays for shipping
+          - name: log_cost
+            description: the cost of preparing the parcel in the distribution centre/warehouse
+          - name: ship_cost
+            description: shipping cost paid by Greenweez to the carrier/logistics provider
