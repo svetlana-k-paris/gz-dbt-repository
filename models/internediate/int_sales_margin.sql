@@ -18,7 +18,7 @@ SELECT
     products.products_id,
 
     sales.quantity * products.purchase_price AS purchase_cost,
-    sales.revenue - (sales.quantity * products.purchase_price) AS margin
+    ROUND(sales.revenue - (sales.quantity * products.purchase_price), 2) AS margin
 
 FROM sales
 LEFT JOIN products
