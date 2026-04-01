@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: int_sales_margin
+    description: >
+      Internemdiate view that enrich the sales with product informations and calculate purchase_cost and margin
+
+    columns:
+      - name: orders_id
+        description: identifier of orders
+        tests:
+          - not_null
+
+      - name: date_date
+        description: date of order
+
+      - name: revenue
+        description: revenue of the row
+
+      - name: quantity
+        description: sold quantity
+
+      - name: products_id
+        description: identifier of products
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_gz_raw_product')
+                field: products_id
+
+      - name: purchase_price
+        description: purchase price of products
+
+      - name: purchase_cost
+        description: total cost (quantity * purchase_price)
+        tests:
+          - not_null
+
+      - name: margin
+        description: margin (revenue - purchase_cost)
+        tests:
+          - not_null
