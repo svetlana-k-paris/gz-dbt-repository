@@ -41,3 +41,28 @@ models:
         description: margin (revenue - purchase_cost)
         tests:
           - not_null
+
+  - name: int_orders_margin
+    description: Aggregated metrics at order level
+
+    columns:
+      - name: orders_id
+        description: Order identifier
+        tests:
+          - not_null
+          - unique
+
+      - name: date_date
+        description: Order date
+        tests:
+          - not_null
+
+      - name: order_revenue
+        description: Total revenue per order
+        tests:
+          - not_null
+
+      - name: order_margin
+        description: Total margin per order
+        tests:
+          - not_null
